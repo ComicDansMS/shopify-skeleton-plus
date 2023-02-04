@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "placeholder": {
+      "type": "placeholder",
+      "settings": {
+        "heading": "404"
+      }
+    }
+  },
+  "order": [
+    "placeholder"
+  ]
+}

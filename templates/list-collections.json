@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "placeholder": {
+      "type": "placeholder",
+      "settings": {
+        "heading": "list collections"
+      }
+    }
+  },
+  "order": [
+    "placeholder"
+  ]
+}

@@ -1,0 +1,594 @@
+/*******************************/
+/*         Properties          */
+/*******************************/
+
+:root {
+  --duration-short: 100ms;
+  --duration-default: 200ms;
+  --duration-long: 500ms;
+  --border: solid 1px rgb(var(--color-foreground));
+}
+
+/* White */
+:root,
+.background-1 {
+  --color-foreground: var(--color-base-foreground);
+  --color-background: var(--color-base-background);
+}
+
+/* Charcoal */
+.background-2 {
+  --color-foreground: var(--color-base-background);
+  --color-background: var(--color-base-foreground);
+}
+
+/* Sand */
+.background-3 {
+  --color-foreground: var(--color-base-foreground)
+  --color-background: var(--color-base-accent-1);
+}
+
+/* Olive */
+.background-4 {
+  --color-foreground: var(--color-base-accent-1)
+  --color-background: var(--color-base-accent-2);
+}
+
+/*******************************/
+/*             Base            */
+/*******************************/
+
+.page-width {
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+body,
+.color-background-1,
+.color-background-2,
+.color-background-3,
+.color-background-4 {
+  color: rgb(var(--color-foreground));
+  background: rgb(var(--color-background));
+}
+
+.skip-to-content-link:focus {
+  z-index: 9999;
+  position: inherit;
+  overflow: auto;
+  width: auto;
+  height: auto;
+  clip: auto;
+}
+
+::selection {
+  background-color: rgba(var(--color-foreground), 0.2);
+}
+
+table:not([class]) {
+  table-layout: fixed;
+  border-collapse: collapse;
+  font-size: 1.4rem;
+  border-style: hidden;
+  box-shadow: 0 0 0 0.1rem rgba(var(--color-foreground), 0.2);
+  /* draws the table border  */
+}
+
+table:not([class]) td,
+table:not([class]) th {
+  padding: 1em;
+  border: 0.1rem solid rgba(var(--color-foreground), 0.2);
+}
+
+a:empty:not(.not-empty),
+ul:empty:not(.not-empty),
+dl:empty:not(.not-empty),
+div:empty:not(.not-empty),
+section:empty:not(.not-empty),
+article:empty:not(.not-empty),
+p:empty:not(.not-empty),
+h1:empty:not(.not-empty),
+h2:empty:not(.not-empty),
+h3:empty:not(.not-empty),
+h4:empty:not(.not-empty),
+h5:empty:not(.not-empty),
+h6:empty:not(.not-empty) {
+  display: none;
+}
+
+a:not([href]) {
+  cursor: not-allowed;
+}
+
+a {
+  color: rgb(var(--color-foreground));
+}
+
+/*******************************/
+/*         Typography          */
+/*******************************/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+.h0,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5 {
+  font-family: var(--font-heading-family);
+  font-weight: var(--font-heading-weight);
+  word-break: break-word;
+}
+
+.h0 { font-size: 4.5rem; }
+.h1, h1 { font-size: 3rem; }
+.h2, h2 { font-size: 2.2rem; }
+.h3, h3 { font-size: 1.8rem; }
+
+@media only screen and (min-width: 750px) {
+  .h0 { font-size: 5.5rem; }
+  .h1, h1 { font-size: 3.5rem; }
+  .h2, h2 { font-size: 2.4rem; }
+  .h3, h3 { font-size: 1.8rem; }
+}
+
+/* Set for fonts around 1rem */
+.baseline-offset span {
+  position: relative;
+  top: -0.0625em;
+}
+
+/*******************************/
+/*          Utility            */
+/*******************************/
+
+@media screen and (max-width: 749px) {
+  .small-hide {
+    display: none !important;
+  }
+}
+
+@media screen and (min-width: 750px) and (max-width: 989px) {
+  .medium-hide {
+    display: none !important;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .large-up-hide {
+    display: none !important;
+  }
+}
+
+.list-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.list-menu--inline {
+  display: inline-flex;
+  flex-wrap: wrap;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0 0 0 0);
+  word-wrap: normal !important;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.left {
+  text-align: left;
+}
+
+.center {
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.full-unstyled-link {
+  text-decoration: none;
+  color: currentColor;
+  display: block;
+}
+
+.card-link:after {
+  content: '';
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.ratio {
+  display: flex;
+  position: relative;
+  align-items: stretch;
+}
+
+.ratio::before {
+  content: '';
+  width: 0;
+  height: 0;
+  padding-bottom: var(--ratio-percent);
+}
+
+/*******************************/
+/*           Focus             */
+/*******************************/
+
+/* Focus ring - default (with offset) */
+
+*:focus {
+  outline: 0;
+  box-shadow: none;
+}
+
+*:focus-visible {
+  outline: 0.2rem solid rgba(var(--color-foreground), 0.5);
+  outline-offset: 0.3rem;
+  box-shadow: 0 0 0 0.3rem rgb(var(--color-background)),
+    0 0 0.5rem 0.4rem rgba(var(--color-foreground), 0.3);
+}
+
+/* Fallback - for browsers that don't support :focus-visible, a fallback is set for :focus */
+.focused,
+.no-js *:focus {
+  outline: 0.2rem solid rgba(var(--color-foreground), 0.5);
+  outline-offset: 0.3rem;
+  box-shadow: 0 0 0 0.3rem rgb(var(--color-background)),
+    0 0 0.5rem 0.4rem rgba(var(--color-foreground), 0.3);
+}
+
+/* Negate the fallback side-effect for browsers that support :focus-visible */
+.no-js *:focus:not(:focus-visible) {
+  outline: 0;
+  box-shadow: none;
+}
+
+/* Focus ring - inset */
+
+.focus-inset:focus-visible {
+  outline: 0.2rem solid rgba(var(--color-foreground), 0.5);
+  outline-offset: -0.2rem;
+  box-shadow: 0 0 0.2rem 0 rgba(var(--color-foreground), 0.3);
+}
+
+.focused.focus-inset,
+.no-js .focus-inset:focus {
+  outline: 0.2rem solid rgba(var(--color-foreground), 0.5);
+  outline-offset: -0.2rem;
+  box-shadow: 0 0 0.2rem 0 rgba(var(--color-foreground), 0.3);
+}
+
+.no-js .focus-inset:focus:not(:focus-visible) {
+  outline: 0;
+  box-shadow: none;
+}
+
+/* Focus ring - none */
+
+/* Dangerous for a11y - Use with care */
+.focus-none {
+  box-shadow: none !important;
+  outline: 0 !important;
+}
+
+.focus-offset:focus-visible {
+  outline: 0.2rem solid rgba(var(--color-foreground), 0.5);
+  outline-offset: 1rem;
+  box-shadow: 0 0 0 1rem rgb(var(--color-background)),
+    0 0 0.2rem 1.2rem rgba(var(--color-foreground), 0.3);
+}
+
+.focus-offset.focused,
+.no-js .focus-offset:focus {
+  outline: 0.2rem solid rgba(var(--color-foreground), 0.5);
+  outline-offset: 1rem;
+  box-shadow: 0 0 0 1rem rgb(var(--color-background)),
+    0 0 0.2rem 1.2rem rgba(var(--color-foreground), 0.3);
+}
+
+.no-js .focus-offset:focus:not(:focus-visible) {
+  outline: 0;
+  box-shadow: none;
+}
+
+/*******************************/
+/*       Component Grid        */
+/*******************************/
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--grid-spacing);
+}
+
+.grid__item {
+  width: calc(25% - var(--grid-spacing) * 3 / 4);
+  max-width: calc(50% - var(--grid-spacing) / 2);
+  flex-grow: 1;
+  flex-shrink: 0;
+}
+
+.grid--1-col .grid__item {
+  max-width: 100%;
+  width: 100%;
+}
+
+.grid--2-col .grid__item {
+  width: calc(50% - var(--grid-spacing) / 2);
+}
+
+.grid--3-col .grid__item {
+  width: calc(33.33% - var(--grid-spacing) * 2 / 3);
+}
+
+@media screen and (min-width: 750px) {
+  .grid--3-col-tablet .grid__item {
+    width: calc(33.33% - var(--grid-spacing) * 2 / 3);
+  }
+
+  .grid--2-col-tablet .grid__item {
+    width: calc(50% - var(--grid-spacing) / 2);
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .grid--4-col-desktop .grid__item {
+    width: calc(25% - var(--grid-spacing) * 3 / 4);
+    max-width: calc(25% - var(--grid-spacing) * 3 / 4);
+  }
+
+  .grid--3-col-desktop .grid__item {
+    width: calc(33.33% - var(--grid-spacing) * 2 / 3);
+    max-width: calc(33.33% - var(--grid-spacing) * 2 / 3);
+  }
+
+  .grid--2-col-desktop .grid__item {
+    width: calc(50% - var(--grid-spacing) / 2);
+    max-width: calc(50% - var(--grid-spacing) / 2);
+  }
+}
+
+/*******************************/
+/*      Component Media        */
+/*******************************/
+
+.media {
+  display: block;
+  background-color: rgba(var(--color-foreground), 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.media > * {
+  display: block;
+  max-width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.media > img {
+  object-fit: cover;
+  object-position: center center;
+}
+
+/*******************************/
+/*      Component Button       */
+/*******************************/
+
+/* Button - default */
+
+.button,
+.shopify-challenge__button {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border: 0;
+  padding: 0 3rem;
+  min-width: 12rem;
+  min-height: 4.5rem;
+  cursor: pointer;
+  text-decoration: none;
+  color: rgb(var(--color-background));
+  background: rgb(var(--color-foreground));
+  transition: box-shadow var(--duration-short) ease;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Button - Focus */
+
+.button:focus-visible,
+.button:focus,
+.button.focused,
+.shopify-payment-button__button--unbranded:focus-visible,
+.shopify-payment-button [role="button"]:focus-visible,
+.shopify-payment-button__button--unbranded:focus,
+.shopify-payment-button [role="button"]:focus {
+  outline: 0;
+  box-shadow: 0 0 0 0.3rem rgb(var(--color-background)),
+    0 0 0 0.5rem rgba(var(--color-foreground), 0.5),
+    0 0 0.5rem 0.4rem rgba(var(--color-foreground), 0.3);
+}
+
+.button:focus:not(:focus-visible):not(.focused),
+.shopify-payment-button__button--unbranded:focus:not(:focus-visible):not(.focused),
+.shopify-payment-button [role="button"]:focus:not(:focus-visible):not(.focused) {
+  box-shadow: inherit;
+}
+
+.button::selection,
+.shopify-challenge__button::selection,
+.customer button::selection {
+  background-color: rgba(var(--color-button-text), 0.3);
+}
+
+/* Button - Other */
+
+.button:disabled,
+.button[aria-disabled='true'],
+.button.disabled,
+.customer button:disabled,
+.customer button[aria-disabled='true'],
+.customer button.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.button.loading {
+  color: transparent;
+  position: relative;
+}
+
+@media screen and (forced-colors: active) {
+  .button.loading {
+    color: rgb(var(--color-foreground));
+  }
+}
+
+.button.loading > .loading-overlay__spinner {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.button.loading > .loading-overlay__spinner .spinner {
+  width: fit-content;
+}
+
+.button.loading > .loading-overlay__spinner .path {
+  stroke: rgb(var(--color-foreground));
+}
+
+/*******************************/
+/*    Component Cart Bubble    */
+/*******************************/
+
+.cart-count-bubble:empty {
+  display: none;
+}
+
+.cart-count-bubble {
+  position: absolute;
+  background-color: rgb(var(--color-foreground));
+  color: rgb(var(--color-background));
+  height: 1.7rem;
+  width: 1.7rem;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.9rem;
+  bottom: 0.8rem;
+  left: 2.2rem;
+}
+
+/*******************************/
+/*   Section Announcement Bar  */
+/*******************************/
+
+#shopify-section-announcement-bar {
+  z-index: 4;
+}
+
+.announcement-bar {
+  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.08);
+  background: rgb(var(--color-foreground));
+  color: white;
+}
+
+.announcement-bar__link {
+  display: block;
+  width: 100%;
+  padding: 1rem 0;
+  text-decoration: none;
+}
+
+.announcement-bar__link:hover {
+  color: rgb(var(--color-foreground));
+  background-color: rgba(var(--color-card-hover), 0.06);
+}
+
+.announcement-bar__message {
+  padding: 0.7rem 0;
+  margin: 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/*******************************/
+/*       Section Header        */
+/*******************************/
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  background: rgb(var(--color-background));
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.header__center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.header__logo {
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+.header__logo img {
+  width: 12.5rem;
+  height: auto;
+}
+
+.header-menu__item {
+  text-transform: uppercase;
+  margin-right: 4rem;
+  letter-spacing: 0.05em;
+}
+
+li:last-child .header-menu__item {
+  margin-right: 0;
+}

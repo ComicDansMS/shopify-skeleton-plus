@@ -1,0 +1,22 @@
+{
+  "sections": {
+    "placeholder": {
+      "type": "placeholder",
+      "settings": {
+        "heading": "index"
+      }
+    },
+    "343a8fd1-ee22-414a-b83f-efa9333603b7": {
+      "type": "featured-collection",
+      "settings": {
+        "heading": "Featured collection",
+        "collection": "shirts",
+        "products_to_show": 6
+      }
+    }
+  },
+  "order": [
+    "placeholder",
+    "343a8fd1-ee22-414a-b83f-efa9333603b7"
+  ]
+}

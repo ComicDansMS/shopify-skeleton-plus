@@ -1,0 +1,26 @@
+<style>
+  .placeholder {
+    margin-top: 8rem;
+    text-align: center;
+  }
+</style>
+
+<div class="placeholder">
+  <h1>
+    {{ section.settings.heading }}
+  </h1>
+</div>
+
+{% schema %}
+  {
+    "name": "Template Placeholder",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "default": "Placeholder",
+        "label": "Heading"
+      }
+    ]
+  }
+{% endschema %}
